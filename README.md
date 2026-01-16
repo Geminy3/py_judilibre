@@ -23,6 +23,16 @@ The default methods provided by the API are wrapped in Python functions for ease
 
 ## Usage
 
+First of all, you need to get an API key from the [PISTE](https://piste.gouv.fr/) website. Once you have your API key, you can use it to initialize the `Judilibre` class.
+
+```python
+from py_judilibre import Judilibre
+
+api = Judilibre(api_key=KEY_PISTE)
+```
+
+You can then use the various methods provided by the `Judilibre` class to interact with the API.
+
 ## Documentation de l'API
 
 All the informations concerning Julibre API are available on the [PISTE](https://piste.gouv.fr/) website at this url : [Documentation Judilibre](https://piste.gouv.fr/index.php?option=com_apiportal&view=apitester&usage=api&apitab=tests&apiName=JUDILIBRE&apiId=34c6d930-c6da-470f-b30b-a6ffa5dee6b3&managerId=3&type=rest&apiVersion=1.0.0&Itemid=179&swaggerVersion=2.0&lang=fr).
