@@ -11,3 +11,6 @@ wheels/
 
 # Folders
 .DS_Store/
+
+# Secret file
+config.py
