@@ -22,3 +22,15 @@ The default methods provided by the API are wrapped in Python functions for ease
 - `stats`:
 
 ## Usage
+
+## Documentation de l'API
+
+All the informations concerning Julibre API are available on the [PISTE](https://piste.gouv.fr/) website at this url : [Documentation Judilibre](https://piste.gouv.fr/index.php?option=com_apiportal&view=apitester&usage=api&apitab=tests&apiName=JUDILIBRE&apiId=34c6d930-c6da-470f-b30b-a6ffa5dee6b3&managerId=3&type=rest&apiVersion=1.0.0&Itemid=179&swaggerVersion=2.0&lang=fr).
+
+En principe, l'ensemble des paramètres par défaut et des restrictions ont été implémentées dans les fonctions Python. Cependant, pour plus de détails sur les paramètres disponibles, veuillez vous référer à la documentation officielle de l'API.
+
+## To-DO
+
+- implement a Makefile and functions to deploy the repository (mainly for key management)
+- deploy the package on PyPI
+- add more examples and documentation

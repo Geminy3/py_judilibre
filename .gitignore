@@ -11,6 +11,7 @@ wheels/
 
 # Folders
 .DS_Store/
+__pycache__/
 
 # Secret file
 config.py
