@@ -10,6 +10,16 @@ class Judilibre():
         self.base_url = 'https://sandbox-api.piste.gouv.fr/cassation/judilibre/v1.0/'
         print(f"Status : {self.healthcheck()}")        
 
+    def build_requests(self, args, verbose):
+        verbose = args.pop("verbose")
+        params = build_params(args)
+        url = build_url(url_method=self.base_url+"scan", params=params)
+        if verbose:
+            print(f"PARAMS : {params}")
+            print(f"URL : {url}")
+        self.res = requests_api(url, self.header)
+        return(self.res)
+
     def scan(self, type:list[str] = None, theme:list[str] = None, chamber:list[str] = None, 
              formation:list[str] = None, jurisdiction:list[str] = None, location:list[str] = None,
              publication:list[str] = None, solution:list[str] = None, date_start:str = '2021-01-01T06:00:00Z', date_end:str = '', 
@@ -17,28 +27,15 @@ class Judilibre():
              resolve_references:bool = False, withFileOfType:list[str] = None, particularInterest:bool = False, verbose:bool = False):
         args = locals()
         del args['self']
-        verbose = args.pop("verbose")
-        params = build_params(args)
-        url = build_url(url_method=self.base_url+"scan", params=params)
-        if verbose:
-            print(f"PARAMS : {params}")
-            print(f"URL : {url}")
-        res = requests_api(url, self.header)
-        return(res)
+        return(self.build_requests(args, verbose))
 
     def decision(self, id:str = '', resolve_references:bool = False, query:str = '', operator:str = '', verbose:bool = False):
         args = locals()
         del args['self']
-        verbose = args.pop("verbose")
-        params = build_params(args)
-        if len(params['id']) == 0:
+        if len(args['id']) == 0:
             return(ValueError("id argument is mandatory"))
-        url = build_url(url_method=self.base_url+"decision", params=params)
-        if verbose:
-            print(f"PARAMS : {params}")
-            print(f"URL : {url}")
-        res = requests_api(url, self.header)
-        return(res)
+        else:
+            return(self.build_requests(args, verbose))
 
     def healthcheck(self):
         return(requests_api(self.base_url+"healthcheck", self.header))
@@ -46,16 +43,10 @@ class Judilibre():
     def transactionnalhistory(self, date:str = '2021-05-13T06:00:00Z', page_size:int = 500, from_id:str = '', verbose:bool = False):
         args = locals()
         del args['self']
-        verbose = args.pop("verbose")
-        params = build_params(args)
-        if len(params['date']) == 0:
+        if len(args['date']) == 0:
             return(ValueError("date argument is mandatory"))
-        url = build_url(url_method=self.base_url+"transactionnalhistory", params=params)
-        if verbose:
-            print(f"PARAMS : {params}")
-            print(f"URL : {url}")
-        res = requests_api(url, self.header)
-        return(res)
+        else:
+            return(self.build_requests(args, verbose))
 
     def search(self, query:str = '', field:list[str] = None, operator:str = '', type:list[str] = None, theme:list[str] = None, 
                chamber:list[str] = None, formation:list[str] = None, jurisdiction:list[str] = None, location:list[str] = None,
@@ -64,36 +55,15 @@ class Judilibre():
                withFileOfType:list[str] = None, particularInterest:bool = False, verbose:bool = False):
         args = locals()
         del args['self']
-        verbose = args.pop("verbose")
-        params = build_params(args)
-        url = build_url(url_method=self.base_url+"search", params=params)
-        if verbose:
-            print(f"PARAMS : {params}")
-            print(f"URL : {url}")
-        res = requests_api(url, self.header)
-        return(res)
+        return(self.build_requests(args, verbose))
 
     def taxonomy(self, id:str = '', key:str = '', value:str = '', context_value:str = '', verbose:bool = False):
         args = locals()
         del args['self']
-        verbose = args.pop("verbose")
-        params = build_params(args)
-        url = build_url(url_method=self.base_url+"taxonomy", params=params)
-        if verbose:
-            print(f"PARAMS : {params}")
-            print(f"URL : {url}")
-        res = requests_api(url, self.header)
-        return(res)
+        return(self.build_requests(args, verbose))
 
     def stats(self, jurisdiction:str = '', location:str = '', date_start = '', date_end = '', particularInterest:str = '',
               keys:str='', verbose:bool = False):
         args = locals()
         del args['self']
-        verbose = args.pop("verbose")
-        params = build_params(args)
-        url = build_url(url_method=self.base_url+"stats", params=params)
-        if verbose:
-            print(f"PARAMS : {params}")
-            print(f"URL : {url}")
-        res = requests_api(url, self.header)
-        return(res)
+        return(self.build_requests(args, verbose))
