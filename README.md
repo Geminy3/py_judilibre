@@ -41,6 +41,8 @@ En principe, l'ensemble des paramètres par défaut et des restrictions ont ét�
 
 ## To-DO
 
+- Eventually, implement all restriction from the API on the codebase (is it flex enough for long term maintenance ? => Maybe implement some rules with taxonomy call ?)
+- Expand the API to more services than Judilibre => other justice related API (for Open Data access)
 - implement a Makefile and functions to deploy the repository (mainly for key management)
 - deploy the package on PyPI
 - add more examples and documentation
