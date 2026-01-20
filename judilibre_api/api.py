@@ -18,8 +18,7 @@ class Judilibre():
             print(f"PARAMS : {params}")
             print(f"URL : {url}")
         self.res = requests_api(url, self.header)
-        print(self.res)
-        return(None)
+        #return(None)
 
     def scan(self, type:list[str] = None, theme:list[str] = None, chamber:list[str] = None, 
              formation:list[str] = None, jurisdiction:list[str] = None, location:list[str] = None,
@@ -61,7 +60,6 @@ class Judilibre():
     def taxonomy(self, id:str = '', key:str = '', value:str = '', context_value:str = '', verbose:bool = False):
         args = locals()
         del args['self']
-        print("TAXO")
         return(self.build_requests(args, "taxonomy", verbose))
 
     def stats(self, jurisdiction:str = '', location:str = '', date_start = '', date_end = '', particularInterest:str = '',

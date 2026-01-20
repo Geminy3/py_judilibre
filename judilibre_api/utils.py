@@ -23,8 +23,8 @@ def build_params(args):
 
 def requests_api(url, header):
     res = requests.get(url = url, 
-                    headers= header)
+                    headers=header)
     if res.status_code == 200:
         return(json.loads(res.content))
     else:
-        return(ConnectionError)
+        return(ConnectionError("Connection Aborted"))
