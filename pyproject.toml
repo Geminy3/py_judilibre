@@ -1,9 +1,13 @@
 [project]
 name = "py-judilibre"
-version = "0.2.0"
-description = "Add your description here"
+version = "0.4.0a1"
+description = "A Python client for the Judilibre API"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "requests>=2.32.5",
 ]
+
+[build-system]
+requires = ["uv_build >= 0.9.26, <0.10.0"]
+build-backend = "uv_build"

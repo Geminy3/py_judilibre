@@ -79,7 +79,7 @@ wheels = [
 
 [[package]]
 name = "py-judilibre"
-version = "0.2.0"
+version = "0.4.0a1"
 source = { virtual = "." }
 dependencies = [
     { name = "requests" },

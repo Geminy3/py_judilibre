@@ -1,6 +1,16 @@
 from urllib.parse import urlencode
 import requests
 import json
+from exceptions import (
+    ERROR_CODES_TO_EXCEPTIONS,
+    JudilibreInternalError,
+    JudilibreTooManyRequestError,
+    JudilibreSuspiciousActivityError,
+    JudilibreResourceNotFoundError,
+    JudilibreUnauthorizedError,
+    JudilibreInvalidCredentialsError,
+    JudilibreInvalidRequestError
+)
 
 convert_bool = {
     False: "false",
@@ -23,8 +33,12 @@ def build_params(args):
 
 def requests_api(url, header):
     res = requests.get(url = url, 
-                    headers=header)
+                headers=header)
     if res.status_code == 200:
         return(json.loads(res.content))
     else:
-        return(ConnectionError("Connection Aborted"))
+        if res.status_code in ERROR_CODES_TO_EXCEPTIONS:
+            exception = ERROR_CODES_TO_EXCEPTIONS[res.status_code]
+            raise exception from res
+        else:
+            raise res
