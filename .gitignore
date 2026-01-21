@@ -16,3 +16,5 @@ __pycache__/
 # Secret file
 config.py
 main.py
+
+# Other file

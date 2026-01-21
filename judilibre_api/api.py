@@ -1,4 +1,5 @@
 from judilibre_api.utils import convert_bool, build_params, build_url, requests_api
+from urllib.parse import urlencode
 
 class Judilibre():
 
@@ -56,6 +57,11 @@ class Judilibre():
         args = locals()
         del args['self']
         return(self.build_requests(args, "search", verbose))
+
+    def search_next_page(self):
+        if self.res is not None:
+            url = self.base_url+"search?"+self.res['next_page']
+            self.res = requests_api(url, self.header)
 
     def taxonomy(self, id:str = '', key:str = '', value:str = '', context_value:str = '', verbose:bool = False):
         args = locals()
